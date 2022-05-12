@@ -53,13 +53,7 @@ public class Task2Impl implements IElementNumberAssigner {
                 elements.get(i).setupNumber(i);
             }
         }
-        List<Integer> storage2 = new ArrayList<>();
-        for (IElement e : elements) {
-            storage2.add(e.getNumber());
-            ElementExampleImpl es = (ElementExampleImpl) e;
-            System.out.println(es.getContext().getOperationCount());
-        }
-        System.out.println(storage2);
+
     }
 
     private int getFreeSwapNumber(List<Integer> storage) {
