@@ -6,7 +6,6 @@ import java.util.List;
 public class Answer {
     public static void main(String[] args) {
         ElementExampleImpl test = new ElementExampleImpl(new ElementExampleImpl.Context(), 4);
-        System.out.println(test.getContext().getOperationCount());
         ElementExampleImpl test1 = new ElementExampleImpl(new ElementExampleImpl.Context(), 0);
         ElementExampleImpl test2 = new ElementExampleImpl(new ElementExampleImpl.Context(), 1);
         ElementExampleImpl test3 = new ElementExampleImpl(new ElementExampleImpl.Context(), 2);
