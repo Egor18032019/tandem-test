@@ -1,7 +1,9 @@
 package task2;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * одна из возможных реализаций {@link IElement}
@@ -78,8 +80,8 @@ public final class ElementExampleImpl implements IElement {
         this.context.operationCount++;
 
         // по условию задачи, данная операция «долгая»
-        // try { Thread.sleep(10); }
-        // catch (final Throwable t) {}
+//         try { Thread.sleep(1110); }
+//         catch (final Throwable t) {}
     }
 
     @Override
@@ -96,3 +98,5 @@ public final class ElementExampleImpl implements IElement {
                 '}';
     }
 }
+
+

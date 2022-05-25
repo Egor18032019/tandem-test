@@ -1,6 +1,7 @@
 package task2;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * <h1>Задание №2</h1>
@@ -33,27 +34,37 @@ public class Task2Impl implements IElementNumberAssigner {
             throw new RuntimeException(
                     "Empty list.");
         }
-        List<Integer> storage = new ArrayList<>();
+        List<Integer> storageNoSorted = new ArrayList<>();
         for (IElement e : elements) {
-            storage.add(e.getNumber());
+            storageNoSorted.add(e.getNumber());
         }
-        int freeSwapNumber = getFreeSwapNumber(storage) + 1;
-//        [4,0,1,2,5]
-        System.out.println(storage);
+        List<Integer> storageSorted = storageNoSorted.stream().sorted()
+                .collect(Collectors.toList());
+
+        int freeSwapNumber = getFreeSwapNumber(storageNoSorted);
         for (int i = 0; i < elements.size(); i++) {
             int currentNumberForElement = elements.get(i).getNumber();
-            if (currentNumberForElement != i) {
-                int index = storage.indexOf(i);
-                if (index != -1) {
-                    storage.remove(i);
-                    storage.add(index, freeSwapNumber);
+            int rightNumber = storageSorted.get(i);
+            boolean isRightElemenent = currentNumberForElement == rightNumber;
+            if (!isRightElemenent) {
+// на протяжении всей работы метода обеспечивается уникальность номеров элементов:
+                // ищем индекс элемента storageNoSorted что является аналогом elements
+                int index = storageNoSorted.indexOf(rightNumber);
+                // меняли ли мы раньше этот элемент
+                boolean isSwapNumber = currentNumberForElement == storageNoSorted.get(i);
+                if (index != -1 && !isSwapNumber) {
                     elements.get(index).setupNumber(freeSwapNumber);
+                    storageNoSorted.set(index, freeSwapNumber);
                     freeSwapNumber++;
                 }
-                elements.get(i).setupNumber(i);
+                elements.get(i).setupNumber(rightNumber);
             }
         }
-
+        List<Integer> storage3 = new ArrayList<>();
+        for (IElement e : elements) {
+            storage3.add(e.getNumber());
+        }
+        System.out.println(storage3);
     }
 
     private int getFreeSwapNumber(List<Integer> storage) {
@@ -63,8 +74,11 @@ public class Task2Impl implements IElementNumberAssigner {
                     else if (a < b) return -1;
                     else return 0;
                 }).get();
-        return max;
+        return max + 1;
     }
-
-
 }
+
+//        List<IElement> storageSorted = elements.stream().sorted(
+//                (f1, f2) -> Integer.compare(f1.getNumber(), f2.getNumber())
+//        ).collect(Collectors.toList());
+//        Collections.sort(storageNoSorted); //отсортировали
