@@ -36,21 +36,4 @@ public interface IElementNumberAssigner {
     void assignNumbers(List<IElement> elements);
 
 }
-/**
- * как должно работать на мой взгляд ))
- * Пришёл список IElement
- *  примерно такие [4,0,1,2,5] и на выходе мы должны получить список[0,1,2,3,4]
- * шаг 1
- * первому элемента IElement мы должны присвоить number = 0 (setupNumber(0)
- * {предварительно проверив el.getNumber()!=0 }
- * и получается надо освободить/перезаписать 1 element(у которого getNumber()=0)
- * для этого мы:
- * так есть условие  <p>на протяжении всей работы метода обеспечивается уникальность номеров элементов:</p>
- * для этого мы предварительно циклом вытаскиваем все number и складываем их ->
- *  в ArrayList
- * Находим самый максимальный number getFreeSwapNumber() и прибавляем + 1 = freeSwapNumber;
- * то есть мы по списку пробегаем циклом по elements
- * и вызывая el.getNumber() проверяем есть ли такие числа в ArrayList
- * если есть то в ArrayList ищем index => по индексу дергаем из списка элемент и setupNumber(freeSwapNumber)
- * далее freeSwapNumber++
- */
+
