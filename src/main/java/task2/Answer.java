@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Answer {
     public static void main(String[] args) {
-        ElementExampleImpl test = new ElementExampleImpl(new ElementExampleImpl.Context(), 5);
-        ElementExampleImpl test1 = new ElementExampleImpl(new ElementExampleImpl.Context(), 3);
-        ElementExampleImpl test2 = new ElementExampleImpl(new ElementExampleImpl.Context(), 2);
+        ElementExampleImpl test = new ElementExampleImpl(new ElementExampleImpl.Context(), 8);
+        ElementExampleImpl test1 = new ElementExampleImpl(new ElementExampleImpl.Context(), 6);
+        ElementExampleImpl test2 = new ElementExampleImpl(new ElementExampleImpl.Context(), 5);
         ElementExampleImpl test3 = new ElementExampleImpl(new ElementExampleImpl.Context(), -4);
-        ElementExampleImpl test4 = new ElementExampleImpl(new ElementExampleImpl.Context(), 0);
-        ElementExampleImpl test5 = new ElementExampleImpl(new ElementExampleImpl.Context(), 7);
-        ElementExampleImpl test6 = new ElementExampleImpl(new ElementExampleImpl.Context(), 8);
+        ElementExampleImpl test4 = new ElementExampleImpl(new ElementExampleImpl.Context(), 3);
+        ElementExampleImpl test5 = new ElementExampleImpl(new ElementExampleImpl.Context(), 2);
+        ElementExampleImpl test6 = new ElementExampleImpl(new ElementExampleImpl.Context(), 4);
 
         List<IElement> elements = new ArrayList<>();
         elements.add(test);
