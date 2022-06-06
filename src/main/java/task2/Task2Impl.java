@@ -48,15 +48,16 @@ public class Task2Impl implements IElementNumberAssigner {
             boolean isRightElemenent = currentNumberForElement == rightNumber;
             if (!isRightElemenent) {
 // на протяжении всей работы метода обеспечивается уникальность номеров элементов:
-                // ищем индекс элемента storageNoSorted что является аналогом elements
+// ищем индекс элемента storageNoSorted что является аналогом elements
                 int index = storageNoSorted.indexOf(rightNumber);
-                // меняли ли мы раньше этот элемент
-                boolean isSwapNumber = currentNumberForElement == storageNoSorted.get(i);
-                if (index != -1 && !isSwapNumber) {
+                boolean haveItemInStorageNoSorted = index != -1;
+                if (haveItemInStorageNoSorted) {
                     elements.get(index).setupNumber(freeSwapNumber);
                     storageNoSorted.set(index, freeSwapNumber);
                     freeSwapNumber++;
                 }
+                storageNoSorted.set(i, freeSwapNumber);
+                freeSwapNumber++;
                 elements.get(i).setupNumber(rightNumber);
             }
         }
