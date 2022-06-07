@@ -40,7 +40,7 @@ public class Task1Impl implements IStringRowsListSorter {
             throw new RuntimeException("Column index must > 0");
         }
         if (columnIndex >= rows.size()) {
-            throw new RuntimeException("Индекс не может быть больше длины списка");
+            throw new RuntimeException("The index cannot be longer than the length of the list");
         }
         Collections.sort(rows,
                 new RowsComparator(columnIndex));
