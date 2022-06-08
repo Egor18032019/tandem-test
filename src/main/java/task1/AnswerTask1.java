@@ -9,17 +9,19 @@ public class AnswerTask1 {
 
     public static void main(String[] args) {
         List<String[]> rows = new ArrayList<String[]>();
-        String[] foo =    new String[]{"a", "b", "c"};
-        String[] bar =    new String[]{"", null, "ф"};
-        String[] number = new String[]{"1", "2", "2c3"};
-        int columnIndex = 1;
-
+        String[] empty = new String[] {""  , " "  , ""};
+        String[] foo = new String[]   {"A" , "  " , "2"};
+        String[] bar = new String[]   {"  ",  null, "2c4"};
+        String[] number = new String[]{"1" , "2"  , "1c2"};
+        int columnIndex = 2;
         rows.add(foo);
         rows.add(bar);
         rows.add(number);
-        System.out.println(Arrays.toString(rows.get(columnIndex)));
-        Task1Impl.getInstance().sort(rows, 1);
-        System.out.println(Arrays.toString(rows.get(columnIndex)));
+        rows.add(empty);
+        Task1Impl.getInstance().sort(rows, columnIndex);
+        for (String[] piece : rows) {
+            System.out.println(Arrays.toString(piece));
+        }
     }
     /*
         Comparator возвращает int по следующей схеме:
