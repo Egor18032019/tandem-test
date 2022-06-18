@@ -46,18 +46,24 @@ public class RowsComparator implements Comparator<String[]> {
 
         while (true) {
             String piece_1;
-            if (fragment_1.hasNext()) {
-                piece_1 = fragment_1.next();
-            } else {
+            boolean isLastOnF1 = !fragment_1.hasNext();
+            boolean isLastOnF2 = !fragment_2.hasNext();
+            if (isLastOnF1 && isLastOnF2) {
                 compare_result = 0;
                 break;
             }
-            String piece_2;
-            if (fragment_2.hasNext()) {
-                piece_2 = fragment_2.next();
-            } else {
-                compare_result = 0;
+            if (isLastOnF1) {
+                compare_result = -1;
                 break;
+            } else {
+                piece_1 = fragment_1.next();
+            }
+            String piece_2;
+            if (isLastOnF2) {
+                compare_result = 1;
+                break;
+            } else {
+                piece_2 = fragment_2.next();
             }
 //если обе подстроки состоят из цифр
 // - то при сравнении они интерпретируются как целые числа (вначале должно идти меньшее число),
